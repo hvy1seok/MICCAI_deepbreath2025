@@ -20,23 +20,24 @@ def process(path_patient):
     sitk.WriteImage(sub_nii, str(path_patient/'Sub.nii.gz'))
 
 
-
-
-
 if __name__ == "__main__":
-    path_root = Path('/home/gustav/Documents/datasets/ODELIA/')
-    for dataset in ['DUKE', ]: # 'CAM', 'MHA', 'RSH', 'RUMC', 'UKA', 'UMCU', 'DUKE'
+    path_root = Path('../../dataset_downloaded')
+    for dataset in ['CAM', 'MHA', 'RSH', 'RUMC', 'UKA', 'UMCU']: # 'CAM', 'MHA', 'RSH', 'RUMC', 'UKA', 'UMCU', 'DUKE'
         path_data = path_root/dataset/'data'
+
+        if not path_data.exists():
+            print(f"Skipping {dataset}: {path_data} does not exist")
+            continue
 
         files = path_data.iterdir()  
 
         # Option 1: Multi-CPU 
-        with Pool() as pool:
-            for _ in tqdm(pool.imap_unordered(process, files)):
-                pass
+        # with Pool() as pool:
+        #     for _ in tqdm(pool.imap_unordered(process, files)):
+        #         pass
 
         # Option 2: Single-CPU 
-        # for path_dir in tqdm(files):
-        #     process(path_dir)
+        for path_dir in tqdm(files):
+            process(path_dir)
         
     

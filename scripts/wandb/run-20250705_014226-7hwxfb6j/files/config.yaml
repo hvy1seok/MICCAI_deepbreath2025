@@ -1,0 +1,99 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            0wsmwtngw94q4l7d3oro03ycqxo31xox:
+                codePath: scripts\main_train.py
+                codePathLocal: main_train.py
+                cpu_count: 20
+                cpu_count_logical: 28
+                cudaVersion: "12.6"
+                disk:
+                    /:
+                        total: "1999283154944"
+                        used: "1822656532480"
+                email: npjws3690@gmail.com
+                executable: C:\Users\user\Documents\odelia_breast_mri\.venv\Scripts\python.exe
+                git:
+                    commit: 19edf5db40068d8866eb063e13da42dc7126525c
+                    remote: https://github.com/mueller-franzes/odelia_breast_mri.git
+                gpu: NVIDIA GeForce RTX 4060 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 3072
+                      memoryTotal: "8585740288"
+                      name: NVIDIA GeForce RTX 4060 Laptop GPU
+                      uuid: GPU-5d67b8f7-2277-8e48-3296-566e02691f6b
+                host: maison
+                memory:
+                    total: "68408893440"
+                os: Windows-10-10.0.26100-SP0
+                program: C:\Users\user\Documents\odelia_breast_mri\scripts\main_train.py
+                python: CPython 3.10.16
+                root: .
+                startedAt: "2025-07-04T16:42:26.692726Z"
+                writerId: 0wsmwtngw94q4l7d3oro03ycqxo31xox
+        m:
+            - "1": trainer/global_step
+              "6":
+                - 3
+              "7": []
+            - "2": '*'
+              "5": 1
+              "6":
+                - 1
+              "7": []
+        python_version: 3.10.16
+        t:
+            "1":
+                - 1
+                - 9
+                - 41
+                - 48
+                - 49
+                - 103
+            "2":
+                - 1
+                - 9
+                - 41
+                - 48
+                - 49
+                - 103
+            "3":
+                - 7
+                - 13
+                - 66
+            "4": 3.10.16
+            "5": 0.21.0
+            "8":
+                - 3
+            "12": 0.21.0
+            "13": windows-amd64
+backbone_type:
+    value: dinov2
+in_ch:
+    value: 1
+loss:
+    value: CornLossMulti
+loss_kwargs:
+    value:
+        class_labels_num:
+            - 3
+lr_scheduler:
+    value: null
+model_size:
+    value: s
+optimizer:
+    value: AdamW
+optimizer_kwargs:
+    value:
+        lr: 1e-06
+out_ch:
+    value: 3
+save_hyperparameters:
+    value: true
+slice_fusion_type:
+    value: transformer
+spatial_dims:
+    value: 3

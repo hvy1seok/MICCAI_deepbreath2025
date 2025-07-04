@@ -1,6 +1,6 @@
 /**/*
 !/**/
-/venv/
+/.venv/
 !*.ipynb
 !*.gitignore
 !*.md
@@ -22,5 +22,6 @@
 /wandb
 /results
 /scripts/playground
+/dataset_downloaded
 
 !/media/**

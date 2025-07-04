@@ -1,4 +1,3 @@
-
 from pathlib import Path
 from datetime import datetime
 
@@ -17,7 +16,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--institution', default='ODELIA', type=str)
     parser.add_argument('--model', type=str, default='MST', choices=['ResNet', 'MST']) 
-    parser.add_argument('--task', type=str, default="binary", choices=['binary', 'ordinal']) # binary: malignant lesion yes/no, ordinal: no lesion, benign, malignant
+    parser.add_argument('--task', type=str, default="ordinal", choices=['binary', 'ordinal']) # binary: malignant lesion yes/no, ordinal: no lesion, benign, malignant
     parser.add_argument('--config', type=str, default="unilateral", choices=['original', 'unilateral'])
     args = parser.parse_args()
     binary = args.task == 'binary'
@@ -51,7 +50,7 @@ if __name__ == "__main__":
         batch_size=batch_size, 
         pin_memory=True,
         weights= None, #weights,
-        num_workers=16,
+        num_workers=0,
     )
 
     # ------------ Initialize Model ------------

@@ -9,7 +9,7 @@ from .augmentations.augmentations_3d import ImageOrSubjectToTensor, ZNormalizati
 
 
 class ODELIA_Dataset3D(data.Dataset):
-    PATH_ROOT = Path('/home/homesOnMaster/gfranzes/Documents/datasets/ODELIA/')
+    PATH_ROOT = Path('C:/Users/user/Documents/odelia_breast_mri/dataset_downloaded')
     ALL_INSTITUTIONS = ['CAM', 'MHA', 'RSH', 'UKA', 'UMCU']  # exclude 'RUMC' to keep it for testing
     DATA_DIR = {
         "original": "data",
@@ -37,7 +37,7 @@ class ODELIA_Dataset3D(data.Dataset):
             fold = 0,
             binary=True, # If True, binary labels otherwise ordinal 
             labels=None, # None = all labels or  list of labels 
-            config="original", # original, unilateral 
+            config="unilateral", # original, unilateral 
             split= None,
             fraction=None,
             transform = None,
@@ -94,6 +94,15 @@ class ODELIA_Dataset3D(data.Dataset):
         dfs = []
         for institution in self.institutions:
             path_metadata = self.path_root/institution/self.meta_dir 
+            split_path = path_metadata/'split.csv'
+            print(f"Looking for split.csv at: {split_path.absolute()}")
+            print(f"File exists: {split_path.exists()}")
+            print(f"Current working directory: {Path.cwd()}")
+            
+            if not split_path.exists():
+                print(f"Skipping {institution}: split.csv not found")
+                continue
+                
             df = self.load_split(path_metadata/'split.csv', fold=fold, split=split, fraction=fraction)
             df['Institution'] = institution
 
@@ -102,10 +111,22 @@ class ODELIA_Dataset3D(data.Dataset):
             # df = df[df['UID'].isin(uids)]
 
             # Merge with annotations 
-            df_anno = pd.read_csv(path_metadata/'annotation.csv', dtype={'UID':str, 'PatientID':str})
+            anno_path = path_metadata/'annotation.csv'
+            print(f"Looking for annotation.csv at: {anno_path.absolute()}")
+            print(f"File exists: {anno_path.exists()}")
+            
+            if not anno_path.exists():
+                print(f"Skipping {institution}: annotation.csv not found")
+                continue
+                
+            df_anno = pd.read_csv(anno_path, dtype={'UID':str, 'PatientID':str})
             df = df.merge(df_anno, on='UID', how='inner')
 
             dfs.append(df)
+            
+        if not dfs:
+            raise ValueError("No valid institutions found with required files (split.csv and annotation.csv)")
+            
         df = pd.concat(dfs).reset_index(drop=True)
 
 
