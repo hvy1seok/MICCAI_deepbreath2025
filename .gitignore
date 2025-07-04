@@ -18,9 +18,9 @@
 
 /build/
 
-/runs 
-/wandb
-/results
+**/runs/
+**/wandb/
+**/results/
 /scripts/playground
 /dataset_downloaded
 
