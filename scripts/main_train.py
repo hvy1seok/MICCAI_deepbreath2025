@@ -11,6 +11,7 @@ from odelia.data.datamodules import DataModule
 from odelia.models import ResNet, MST, ResNetRegression, MSTRegression
 import argparse
 
+PATH_ROOT = Path('C:/Users/user/Documents/odelia_breast_mri/dataset_downloaded')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

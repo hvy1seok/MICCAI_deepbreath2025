@@ -9,7 +9,7 @@ from .augmentations.augmentations_3d import ImageOrSubjectToTensor, ZNormalizati
 
 
 class ODELIA_Dataset3D(data.Dataset):
-    PATH_ROOT = Path('C:/Users/user/Documents/odelia_breast_mri/dataset_downloaded')
+    PATH_ROOT = Path('../dataset_downloaded')
     ALL_INSTITUTIONS = ['CAM', 'MHA', 'RSH', 'UKA', 'UMCU']  # exclude 'RUMC' to keep it for testing
     DATA_DIR = {
         "original": "data",

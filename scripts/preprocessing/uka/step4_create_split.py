@@ -4,7 +4,7 @@ import pandas as pd
 
 from sklearn.model_selection import StratifiedGroupKFold, StratifiedKFold
 
-path_root = Path('/home/gustav/Documents/datasets/ODELIA/')
+path_root = Path('../../../dataset_downloaded')
 path_root_dataset = path_root/'UKA_all'
 path_root_metadata = path_root_dataset/'metadata'
 

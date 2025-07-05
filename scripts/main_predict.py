@@ -86,7 +86,7 @@ def evaluate(gt, nn, nn_prob, label, label_vals, path_out):
 if __name__ == "__main__":
     #------------ Get Arguments ----------------
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_run', default='runs/ODELIA/MST_binary_unilateral_2025_05_13_170027/epoch=22-step=188922.ckpt', type=str)
+    parser.add_argument('--path_run', default='runs/ODELIA/MST_binary_unilateral_2025_05_13_174115/epoch=91-step=35788.ckpt', type=str)
     parser.add_argument('--test_institution', default='ODELIA', type=str)
     args = parser.parse_args()
     batch_size = 4
